@@ -13,6 +13,7 @@ import ttypescript from 'ttypescript';
 import typescript from 'rollup-plugin-typescript2';
 import minimist from 'minimist';
 import image from '@rollup/plugin-image';
+import json from '@rollup/plugin-json';
 
 // Get browserslist config and remove ie from es build targets
 const esbrowserslist = fs.readFileSync('./.browserslistrc')
@@ -100,6 +101,7 @@ if (!argv.format || argv.format === 'es') {
       exports: 'named',
     },
     plugins: [
+      json(),
       image(),
       replace(baseConfig.plugins.replace),
       ...baseConfig.plugins.preVue,
